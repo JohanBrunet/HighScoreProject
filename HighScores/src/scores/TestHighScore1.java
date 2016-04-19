@@ -12,12 +12,13 @@ import java.util.Scanner;
 
 import jdk.management.resource.internal.inst.FileInputStreamRMHooks;
 
-public class TestHighScore0 {
-	public static final String  FILE_NAME = "scores/scoreSamples.txt";
+public class TestHighScore1 {
+	public static final String THINGSPEAK_URL = "https://api.thingspeak.com/channels/109692/feeds.csv";
 	
 	public static void main(String[] args) {
 		String playerName;
 		int score;
+		HighScore1 highScore = new HighScore1(THINGSPEAK_URL);
 		
 		Scanner scan = new Scanner(System.in);
 		System.out.println("> Please enter a player name");
@@ -28,35 +29,11 @@ public class TestHighScore0 {
 			playerName = "default";
 		}
 		scan.close();
-		
-		score = getScore(new File(FILE_NAME));
+		ArrayList<Integer> scores = new ArrayList<Integer>(highScore.getScores());
+		score = scores.get(getRandInt(scores.size()));
 		
 		System.out.println("Player : " + playerName);
 		System.out.println("Score : " + score);
-	}
-	
-	private static int getScore(File scores) {
-		int score;
-		ArrayList<String> allScores = new ArrayList<String>();
-		
-		try {
-			FileInputStream input = new FileInputStream(scores);
-			InputStreamReader inread = new InputStreamReader(input);
-			BufferedReader buffer = new BufferedReader(inread);
-			String ligne;
-			while ((ligne=buffer.readLine()) != null) {
-				allScores.add(ligne);				
-			}
-		} 
-		catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} 
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		score = Integer.parseInt(allScores.get(getRandInt(allScores.size())));
-		return score;
 	}
 	
 	private static int getRandInt(int bound) {
