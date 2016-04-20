@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+import utils.Parser;
+
 public class TestHighScore1 {
 	public static final String THINGSPEAK_URL = "https://api.thingspeak.com/channels/109692/feeds.csv";
 	
@@ -21,8 +23,18 @@ public class TestHighScore1 {
 			playerName = "default";
 		}
 		scan.close();
-		ArrayList<Integer> scores = new ArrayList<Integer>(highScore.getScores());
+		ArrayList<String> dataToParse = new ArrayList<String>(highScore.getScores());
+		ArrayList<Integer> scores = new ArrayList<Integer>();
+		for (String s : dataToParse) {
+			scores.add(Parser.parseScore(s));
+		}
 		score = scores.get(getRandInt(scores.size()));
+		
+		int i = 0;
+		for (int sc : scores) {
+			System.out.println("Score " + i + " : " + sc);
+			i++;
+		}
 		
 		System.out.println("Player : " + playerName);
 		System.out.println("Score : " + score);
