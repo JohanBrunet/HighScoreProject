@@ -6,9 +6,21 @@ import java.util.Scanner;
 
 import utils.Parser;
 
+/**
+ * Main class for running the application
+ * @author Johan Brunet, Julien Gallego
+ *
+ */
 public class TestHighScore1 {
+	/**
+	 * The ThingSpeak URL to connect to in order to retrieve data
+	 */
 	public static final String THINGSPEAK_URL = "https://api.thingspeak.com/channels/109692/feeds.csv";
 	
+	/**
+	 * Main of the application
+	 * @param args some arguments
+	 */
 	public static void main(String[] args) {
 		String playerName;
 		int score;
@@ -40,6 +52,11 @@ public class TestHighScore1 {
 		System.out.println("Score : " + score);
 	}
 	
+	/**
+	 * Method to get a random integer between 0 and the specified bound
+	 * @param bound maximum value of the random integer
+	 * @return a random integer between 0 and the bound
+	 */
 	private static int getRandInt(int bound) {
 		Random rand = new Random();
 		return (int)(rand.nextInt(bound));
