@@ -7,20 +7,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.List;
-
-import utils.Parser;
 
 public class HighScore1 {
-	private List<Integer> allScores;
+	private ArrayList<String> allScores;
 	private String url;
 	
 	public HighScore1(String url) {
-		this.allScores = new ArrayList<Integer>();
+		this.allScores = new ArrayList<String>();
 		this.url = url;
 	}
 	
-	public List<Integer> getScores() {
+	public ArrayList<String> getScores() {
 		try {
 			URL thingSpeak = new URL(this.url);
 			URLConnection connect = thingSpeak.openConnection();
@@ -29,8 +26,7 @@ public class HighScore1 {
 			buffer.readLine();
 			while ((inputLine = buffer.readLine()) != null) {
 				if (!inputLine.equals("")) {
-					System.out.println("Line : " + inputLine);
-					allScores.add(Parser.parseScore(inputLine));
+					allScores.add(inputLine);
 				}
 			}
 		}
