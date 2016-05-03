@@ -42,12 +42,6 @@ public class TestHighScore1 {
 		}
 		score = scores.get(getRandInt(scores.size()));
 		
-		int i = 0;
-		for (int sc : scores) {
-			System.out.println("Score " + i + " : " + sc);
-			i++;
-		}
-		
 		System.out.println("Player : " + playerName);
 		System.out.println("Score : " + score);
 	}
