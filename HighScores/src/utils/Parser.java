@@ -16,4 +16,9 @@ public class Parser {
 		String[] parse = s.split(",");
 		return Integer.parseInt(parse[2]);
 	}
+
+	public static String parseName(String s) {
+		String[] parse = s.split(",");
+		return parse[3];
+	}
 }
