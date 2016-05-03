@@ -1,9 +1,13 @@
 package scores;
 
 public class BestPlayer2 {
-	private String playerName;
+	private String name;
 	private int score;
 	
+	public BestPlayer2(String name, int score) {
+		this.name = name;
+		this.score = score;
+	}
 	
 	public int compareTo(BestPlayer2 p){
 		if (this.score > p.getScore()) {
@@ -18,13 +22,13 @@ public class BestPlayer2 {
 	}
 
 
-	public String getPlayer() {
-		return playerName;
+	public String getName() {
+		return name;
 	}
 
 
-	public void setPlayer(String player) {
-		this.playerName = player;
+	public void setName(String player) {
+		this.name = player;
 	}
 	
 	public int getScore() {
