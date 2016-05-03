@@ -28,7 +28,7 @@ public class HighScore2 {
 	 * and opens the connection to ThingSpeak feed
 	 * @param url the URL to connect to
 	 */
-	public HighScore1(String url) {
+	public HighScore2(String url) {
 		this.allScores = new ArrayList<String>();
 		openConnection(url);
 	}
@@ -73,6 +73,7 @@ public class HighScore2 {
 		}
 	}
 	
+	/*
 	public BestPlayer[] tenBestScores(String[] readScores){
 		BestPlayer[] best=new BestPlayer[10];
 		int i=0;
@@ -132,6 +133,18 @@ public class HighScore2 {
 		}
 		return best;
 		
+	}
+	*/
+
+	public BestPlayer2[] tenBestScores(ArrayList<String> readScores) {
+		BestPlayer2[] tenBests = new BestPlayer2[10];
+		int i;
+		String currentData;
+		for(i = 0; i < readScores.size(); i++) {
+			currentData = readScores.get(i);
+			BestPlayer2 current = new BestPlayer2(Parser.parseName(currentData), Parser.parseScore(currentData));
+		}
+		return tenBests;
 	}
 }
 
