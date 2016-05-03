@@ -42,8 +42,9 @@ public class HighScore1 {
 			BufferedReader buffer = new BufferedReader(new InputStreamReader(this.connection.getInputStream()));
 			String inputLine;
 			buffer.readLine();
+			String phantomLine = "";
 			while ((inputLine = buffer.readLine()) != null) {
-				if (!inputLine.equals("")) {
+				if (!inputLine.equals(phantomLine)) {
 					allScores.add(inputLine);
 				}
 			}
