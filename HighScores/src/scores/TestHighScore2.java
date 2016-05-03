@@ -1,11 +1,6 @@
 package scores;
 
-import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
-
-import utils.Parser;
-
 /**
  * Main class for running the application
  * @author Johan Brunet, Julien Gallego
@@ -23,45 +18,21 @@ public class TestHighScore2 {
 	 */
 	public static void main(String[] args) {
 		String playerName;
-		int score;
-		HighScore2 highScore = new HighScore1(THINGSPEAK_URL);
-		BestPlayer[] top;
+		HighScore2 highScore = new HighScore2(THINGSPEAK_URL);
+		BestPlayer2[] top;
 		
 		Scanner scan = new Scanner(System.in);
 		System.out.println("> Please enter a player name");
 		if (scan.hasNext()) {
 			playerName = scan.nextLine();
 		}
-		else {
-			playerName = "default";
-		}
 		scan.close();
-		ArrayList<String> dataToParse = new ArrayList<String>(highScore.getScores());
-		ArrayList<Integer> scores = new ArrayList<Integer>();
-		for (String s : dataToParse) {
-			scores.add(Parser.parseScore(s));
+		
+		top = highScore.tenBestScores(highScore.getScores());
+		
+		int i;
+		for (i = 0; i < top.length; i++) {
+			System.out.println(i + " - " + top[i].getName() + " : " + top[i].getScore());
 		}
-		score = scores.get(getRandInt(scores.size()));
-		
-		top=highScore(dataToParse);
-		
-		int i = 0;
-		for (BestPlayer b : top) {
-			System.out.println("Score " + i + " : joueur " + b.player + " : " + b.score);
-			i++;
-		}
-		
-		System.out.println("Player : " + playerName);
-		System.out.println("Score : " + score);
-	}
-	
-	/**
-	 * Method to get a random integer between 0 and the specified bound
-	 * @param bound maximum value of the random integer
-	 * @return a random integer between 0 and the bound
-	 */
-	private static int getRandInt(int bound) {
-		Random rand = new Random();
-		return (int)(rand.nextInt(bound));
 	}
 }
