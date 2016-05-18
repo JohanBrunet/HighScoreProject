@@ -1,15 +1,42 @@
 package scores;
 
-public class BestPlayer2 {
+/**
+ * Class representing the best player
+ * @author Johan Brunet, Julien Gallego
+ *
+ */
+public class BestPlayer2 implements Comparable<BestPlayer2> {
+	/**
+	 * The name of the best player
+	 */
 	private String name;
+	/**
+	 * The name of the best player
+	 */
 	private int score;
 	
+	/**
+	 * Constructor of the class
+	 * @param name the name of the player
+	 * @param score the score of the player
+	 */
 	public BestPlayer2(String name, int score) {
 		this.name = name;
 		this.score = score;
 	}
 	
-	public int compareTo(BestPlayer2 p){
+	/**
+	 * Method to compare the score of the current player to another one
+	 * @param p the player to compare to the current one
+	 * @return -1 if the current player's score is lesser than the other's, 0 if the scores are equals, 1 in other case
+	 */
+	public int compareTo(BestPlayer2 p) {
+		if (p == null) {
+			throw new NullPointerException();
+		}
+		if (!(p instanceof BestPlayer2)) {
+			throw new ClassCastException();
+		}
 		if (this.score > p.getScore()) {
 			return 1;
 		}
