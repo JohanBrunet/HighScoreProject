@@ -7,6 +7,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.Collections;
+
 import utils.Parser;
 /**
  * Class allowing to retieve data from ThingSpeak
@@ -72,79 +74,24 @@ public class HighScore2 {
 			e.printStackTrace();
 		}
 	}
-	
-	/*
-	public BestPlayer[] tenBestScores(String[] readScores){
-		BestPlayer[] best=new BestPlayer[10];
-		int i=0;
-		BestPlayer test;
-		boolean place==false;
-		for (String s : readScores){
-			if (i<10){
-				test.score=Parser.parseScore[s];
-				test.player=Parser.parseName[s];
-				int j=i;
-				While (j>-1 && place==false){
-					if (test.compareto(best[j])==1 && j==0;){
-						best[j+1]=best[j];
-						best[j]=test;
-					}
-					else if (test.compareto(best[j])==1 ){
-						best[j+1]=best[j];
-						j=j-1;
-					}
-						else if (test.compareto(best[j]<1){
-							best[j+1]=test;
-							place=true;
-						}	
-				}
-			}
-				
-			else{
-				test.score=Parser.parseScore[s];
-				test.player=Parser.parseName[s];
-				int j=9;				
-				While (j>-1 && place==false){
-					if (test.compareto(best[j])==1 && j==9){
-						j=j-1;
-					}
-					else if (test.compareto(best[j])==1 && j==0){
-							best[j+1]=best[j];
-							best[j]=test;
-						}
-						else if (test.compareto(best[j])==1){
-							best[j+1]=best[j];
-							j=j-1;
-						}
-							else if (test.compareto(best[j]<1){
-								if (j==9)
-									place=true;
-								else{
-									best[j+1]=test;
-									place=true;
-								}
-								
-							}	
-						
-					}
-				}
-					
-			}
-		}
-		return best;
-		
-	}
-	*/
 
 	public BestPlayer2[] tenBestScores(ArrayList<String> readScores) {
 		BestPlayer2[] tenBests = new BestPlayer2[10];
-		int i;
-		String currentData;
-		for(i = 0; i < readScores.size(); i++) {
-			currentData = readScores.get(i);
-			BestPlayer2 current = new BestPlayer2(Parser.parseName(currentData), Parser.parseScore(currentData));
+		ArrayList<BestPlayer2> playerRecords = parsePlayers(readScores);
+		Collections.sort(playerRecords, Collections.reverseOrder());
+
+		for(int i = 0; i < playerRecords.size() && i < 10; i++) {
+			tenBests[i] = playerRecords.get(i);
 		}
 		return tenBests;
+	}
+	
+	public ArrayList<BestPlayer2> parsePlayers(ArrayList<String> readScores) {
+		ArrayList<BestPlayer2> playerRecord = new ArrayList<BestPlayer2>(readScores.size());
+		for(String line : readScores) {
+			playerRecord.add(new BestPlayer2(Parser.parseName(line), Parser.parseScore(line)));
+		}
+		return playerRecord;
 	}
 }
 

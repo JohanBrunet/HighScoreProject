@@ -32,7 +32,9 @@ public class TestHighScore2 {
 		
 		int i;
 		for (i = 0; i < top.length; i++) {
-			System.out.println(i + " - " + top[i].getName() + " : " + top[i].getScore());
+			if(top[i] != null) {
+				System.out.println((i+1) + " - " + top[i].getName() + " : " + top[i].getScore());
+			}
 		}
 	}
 }

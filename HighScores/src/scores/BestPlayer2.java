@@ -48,7 +48,6 @@ public class BestPlayer2 implements Comparable<BestPlayer2> {
 		}
 	}
 
-
 	public String getName() {
 		return name;
 	}
