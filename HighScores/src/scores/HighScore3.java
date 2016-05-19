@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -101,8 +102,9 @@ public class HighScore3 {
             	String nom = p.getName();
             	int score = p.getScore();
             	URL getURL = new URL("https://api.thingspeak.com/update?api_key=6CX6OM3NHAZH6E2U&field1="+score+ "&field3="+nom);
-            	OutputStreamWriter send = new OutputStreamWriter(getURL.openConnection().getOutputStream());
-            	send.close();
+            	HttpURLConnection con = (HttpURLConnection) getURL.openConnection();
+            	con.setRequestMethod("GET");
+            	con.getResponseCode();
         } 
 		catch (MalformedURLException e) {
 			e.printStackTrace();
