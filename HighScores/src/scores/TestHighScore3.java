@@ -35,7 +35,9 @@ public class TestHighScore3 {
 		BestPlayer3 player = top[rand.nextInt(10)];
 		player.setName("test");
 		player.setScore(player.getScore()*10);
-		
+		if (player.getScore()>top[10].getScore()){
+			highScore.sendScore(player);
+		}
 		
 		int i;
 		for (i = 0; i < top.length; i++) {
