@@ -11,39 +11,50 @@ public class TestHighScore3 {
 	/**
 	 * The ThingSpeak URL to connect to in order to retrieve data
 	 */
-	public static final String THINGSPEAK_FEED_URL = "https://api.thingspeak.com/channels/109693/feeds.csv";
+	public static final String THINGSPEAK_FEED_URL = "https://api.thingspeak.com/channels/109692/feeds.csv";
 	
 	/**
 	 * Main of the application
 	 * @param args some arguments
 	 */
 	public static void main(String[] args) {
-		String playerName;
 		HighScore3 highScore = new HighScore3(THINGSPEAK_FEED_URL);
 		BestPlayer3[] top;
 		
-		Scanner scan = new Scanner(System.in);
+
 		System.out.println("> Please enter a player name");
-		if (scan.hasNext()) {
-			playerName = scan.nextLine();
-		}
+		Scanner scan = new Scanner(System.in);
+		String playerName = scan.nextLine();
 		scan.close();
+		System.out.println("Name : " + playerName);
 		
 		Random rand = new Random();
 		
 		top = highScore.tenBestScores(highScore.getScores());
-		BestPlayer3 player = top[rand.nextInt(10)];
-		player.setName("test");
-		player.setScore(player.getScore()*10);
-		if (player.getScore()>top[10].getScore()){
-			highScore.sendScore(player);
+		
+
+		int it;
+		for (it = 0; it < top.length; it++) {
+			if(top[it] != null) {
+				System.out.println((it+1) + " - " + top[it].getName() + " : " + top[it].getScore());
+			}
 		}
 		
-		int i;
-		for (i = 0; i < top.length; i++) {
-			if(top[i] != null) {
-				System.out.println((i+1) + " - " + top[i].getName() + " : " + top[i].getScore());
+		BestPlayer3 player = top[rand.nextInt(10)];
+		player.setName(playerName);
+		player.setScore(player.getScore()*5);
+		
+		int i = 0;
+		boolean toBeSent = false;
+		while (!toBeSent && i < top.length && top[i] != null) {
+			if (player.getScore() >= top[i].getScore()) {
+				toBeSent = true;
 			}
+			i++;
+		}
+		if (toBeSent) {
+			highScore.sendScore(player);
+			System.out.println("The player " + player.getName() + "  is amongst 10 bests and has been sent.");
 		}
 	}
 }

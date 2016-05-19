@@ -26,7 +26,7 @@ public class HighScore3 {
 	 * The connection to the ThingSpeak feed
 	 */
 	private URLConnection connection;
-	
+
 	/**
 	 * Constructor of the class that instantiates the list of lines of data 
 	 * and opens the connection to ThingSpeak feed
@@ -36,7 +36,7 @@ public class HighScore3 {
 		this.allScores = new ArrayList<String>();
 		openConnection(url);
 	}
-	
+
 	/**
 	 * Method to retrieve data for the ThingSpeak feed
 	 * @return the list containing the lines of data retrieved from ThingSpeak
@@ -60,7 +60,7 @@ public class HighScore3 {
 		}
 		return allScores;
 	}
-	
+
 	/**
 	 * Method that opens the connection to the ThingSpeak feed
 	 * @param url the URL to connect to
@@ -87,7 +87,7 @@ public class HighScore3 {
 		}
 		return tenBests;
 	}
-	
+
 	public ArrayList<BestPlayer3> parsePlayers(ArrayList<String> readScores) {
 		ArrayList<BestPlayer3> playerRecord = new ArrayList<BestPlayer3>(readScores.size());
 		for(String line : readScores) {
@@ -97,21 +97,20 @@ public class HighScore3 {
 	}
 
 	public void sendScore(BestPlayer3 p){
-        
+
 		try{
-            	String nom = p.getName();
-            	int score = p.getScore();
-            	URL getURL = new URL("https://api.thingspeak.com/update?api_key=6CX6OM3NHAZH6E2U&field1="+score+ "&field3="+nom);
-            	HttpURLConnection con = (HttpURLConnection) getURL.openConnection();
-            	con.setRequestMethod("GET");
-            	con.getResponseCode();
-        } 
+			String nom = p.getName();
+			int score = p.getScore();
+			URL getURL = new URL("https://api.thingspeak.com/update?api_key=6CX6OM3NHAZH6E2U&field1="+score+ "&field2="+nom);
+			HttpURLConnection con = (HttpURLConnection) getURL.openConnection();
+			con.setRequestMethod("GET");
+			con.getResponseCode();
+		} 
 		catch (MalformedURLException e) {
 			e.printStackTrace();
 		} 
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-        
+	}  
 }
