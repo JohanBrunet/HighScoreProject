@@ -26,7 +26,7 @@ public class TestHighScore4 {
 	 * @param args some arguments
 	 */
 	public static void main(String[] args) {
-
+		
 		boolean newStart = true;
 		Scanner scan = new Scanner(System.in);
 
@@ -69,13 +69,14 @@ public class TestHighScore4 {
 				else {
 					System.out.println("The player " + player.getName() + "(" + player.getScore() + ")" + "  is not amongst 10 bests and has not been sent.\n");
 				}
+				System.out.println("Waiting for ThingSpeak to be ready... (10s)");
+				try {
+					Thread.sleep(10000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
-			try {
-				Thread.sleep(10000);
-			} 
-			catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			System.out.println("Good bye !");
 		}
 		scan.close();
 	}
