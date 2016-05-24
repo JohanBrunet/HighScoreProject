@@ -2,7 +2,7 @@
 Java project meant to display high scores of a game
 
 # Online documentation
-http://johanbrunet.github.io/HighScore/
+http://johanbrunet.github.io/HighScoreProject/
 
 #Authors
 Johan Brunet / Julien Gallego
