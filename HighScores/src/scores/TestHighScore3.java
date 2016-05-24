@@ -11,7 +11,7 @@ public class TestHighScore3 {
 	/**
 	 * The ThingSpeak URL to connect to in order to retrieve data
 	 */
-	public static final String THINGSPEAK_FEED_URL = "https://api.thingspeak.com/channels/109692/feeds.csv";
+	public static final String THINGSPEAK_FEED_URL = "https://api.thingspeak.com/channels/118973/feeds.csv";
 
 	/**
 	 * Main of the application

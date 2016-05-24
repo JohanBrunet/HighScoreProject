@@ -18,7 +18,7 @@ public class TestHighScore4 {
 	/**
 	 * The ThingSpeak URL to connect to in order to retrieve data
 	 */
-	public static final String THINGSPEAK_FEED_URL = "https://api.thingspeak.com/channels/109692/feeds.csv";
+	public static final String THINGSPEAK_FEED_URL = "https://api.thingspeak.com/channels/118973/feeds.csv";
 	public static final String  FILE_NAME = "scores/scoreSamples.txt";
 
 	/**
@@ -70,7 +70,12 @@ public class TestHighScore4 {
 					System.out.println("The player " + player.getName() + "(" + player.getScore() + ")" + "  is not amongst 10 bests and has not been sent.\n");
 				}
 			}
-
+			try {
+				Thread.sleep(10000);
+			} 
+			catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 		scan.close();
 	}

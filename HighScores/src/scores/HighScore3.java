@@ -101,7 +101,7 @@ public class HighScore3 {
 		try{
 			String nom = p.getName();
 			int score = p.getScore();
-			URL getURL = new URL("https://api.thingspeak.com/update?api_key=6CX6OM3NHAZH6E2U&field1="+score+ "&field2="+nom);
+			URL getURL = new URL("https://api.thingspeak.com/update?api_key=UAL2XIW61D2VVSBY&field1="+score+ "&field2="+nom);
 			HttpURLConnection con = (HttpURLConnection) getURL.openConnection();
 			con.setRequestMethod("GET");
 			con.getResponseCode();
