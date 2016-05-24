@@ -11,7 +11,7 @@ public class TestHighScore2 {
 	 * The ThingSpeak URL to connect to in order to retrieve data
 	 */
 	public static final String THINGSPEAK_URL = "https://api.thingspeak.com/channels/109692/feeds.csv";
-	
+
 	/**
 	 * Main of the application
 	 * @param args some arguments
@@ -20,16 +20,16 @@ public class TestHighScore2 {
 		String playerName;
 		HighScore2 highScore = new HighScore2(THINGSPEAK_URL);
 		BestPlayer2[] top;
-		
+
 		Scanner scan = new Scanner(System.in);
 		System.out.println("> Please enter a player name");
 		if (scan.hasNext()) {
 			playerName = scan.nextLine();
 		}
 		scan.close();
-		
+
 		top = highScore.tenBestScores(highScore.getScores());
-		
+
 		int i;
 		for (i = 0; i < top.length; i++) {
 			if(top[i] != null) {

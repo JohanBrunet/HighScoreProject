@@ -24,7 +24,7 @@ public class HighScore2 {
 	 * The connection to the ThingSpeak feed
 	 */
 	private URLConnection connection;
-	
+
 	/**
 	 * Constructor of the class that instantiates the list of lines of data 
 	 * and opens the connection to ThingSpeak feed
@@ -34,7 +34,7 @@ public class HighScore2 {
 		this.allScores = new ArrayList<String>();
 		openConnection(url);
 	}
-	
+
 	/**
 	 * Method to retrieve data for the ThingSpeak feed
 	 * @return the list containing the lines of data retrieved from ThingSpeak
@@ -58,7 +58,7 @@ public class HighScore2 {
 		}
 		return allScores;
 	}
-	
+
 	/**
 	 * Method that opens the connection to the ThingSpeak feed
 	 * @param url the URL to connect to
@@ -85,7 +85,7 @@ public class HighScore2 {
 		}
 		return tenBests;
 	}
-	
+
 	public ArrayList<BestPlayer2> parsePlayers(ArrayList<String> readScores) {
 		ArrayList<BestPlayer2> playerRecord = new ArrayList<BestPlayer2>(readScores.size());
 		for(String line : readScores) {

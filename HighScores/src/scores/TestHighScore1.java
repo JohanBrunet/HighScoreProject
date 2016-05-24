@@ -16,7 +16,7 @@ public class TestHighScore1 {
 	 * The ThingSpeak URL to connect to in order to retrieve data
 	 */
 	public static final String THINGSPEAK_URL = "https://api.thingspeak.com/channels/109692/feeds.csv";
-	
+
 	/**
 	 * Main of the application
 	 * @param args some arguments
@@ -25,7 +25,7 @@ public class TestHighScore1 {
 		String playerName;
 		int score;
 		HighScore1 highScore = new HighScore1(THINGSPEAK_URL);
-		
+
 		Scanner scan = new Scanner(System.in);
 		System.out.println("> Please enter a player name");
 		if (scan.hasNext()) {
@@ -41,11 +41,11 @@ public class TestHighScore1 {
 			scores.add(Parser.parseScore(s));
 		}
 		score = scores.get(getRandInt(scores.size()));
-		
+
 		System.out.println("Player : " + playerName);
 		System.out.println("Score : " + score);
 	}
-	
+
 	/**
 	 * Method to get a random integer between 0 and the specified bound
 	 * @param bound maximum value of the random integer

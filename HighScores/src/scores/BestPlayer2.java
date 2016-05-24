@@ -14,7 +14,7 @@ public class BestPlayer2 implements Comparable<BestPlayer2> {
 	 * The name of the best player
 	 */
 	private int score;
-	
+
 	/**
 	 * Constructor of the class
 	 * @param name the name of the player
@@ -24,7 +24,7 @@ public class BestPlayer2 implements Comparable<BestPlayer2> {
 		this.name = name;
 		this.score = score;
 	}
-	
+
 	/**
 	 * Method to compare the score of the current player to another one
 	 * @param p the player to compare to the current one
@@ -56,11 +56,11 @@ public class BestPlayer2 implements Comparable<BestPlayer2> {
 	public void setName(String player) {
 		this.name = player;
 	}
-	
+
 	public int getScore() {
 		return this.score;
 	}
-	
+
 	public void setScore(int score) {
 		this.score = score;
 	}
